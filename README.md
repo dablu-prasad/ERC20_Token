@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+# Basic Sample Hardhat Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project demonstrates a basic Hardhat use case. 
 
-## Available Scripts
+Try running some of the following tasks:
 
-In the project directory, you can run:
+```shell
+npx hardhat accounts
+npx hardhat compile
+npx hardhat clean
+npx hardhat test
+npx hardhat node
+node scripts/deploy.js
+npx hardhat help
+```
+About Project
+------------------
+What is ERC-20?
 
-### `npm start`
+The ERC-20 introduces a standard for Fungible Tokens, in other words, they have a property that makes each Token be exactly the same (in type and value) of another Token. For example, an ERC-20 Token acts just like the ETH, meaning that 1 Token is and will always be equal to all the other Tokens.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+BODY
+---------
+The ERC-20 (Ethereum Request for Comments 20), proposed by Fabian Vogelsteller in November 2015, is a Token Standard that implements an API for tokens within Smart Contracts.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Example functionalities ERC-20 provides:
 
-### `npm test`
+-->transfer tokens from one account to another
+-->get the current token balance of an account
+-->get the total supply of the token available on the network
+-->approve whether an amount of token from an account can be spent by a third-party account.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If a Smart Contract implements the following methods and events it can be called an ERC-20 Token Contract and, once deployed, it will be responsible to keep track of the created tokens on Ethereum
 
-### `npm run build`
+NPX install credential
+-------------------------
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+npx create-react-app react-dapp
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install ethers hardhat @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+npm install --save-dev @nomiclabs/hardhat-web3 web3
 
-### `npm run eject`
+npx hardhat
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+npx hardhat compile
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+npx hardhat run scripts/deploy.js --network ropsten
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+npx hardhat run scripts/deploy.js --network ropsten
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npm start
 
-## Learn More
+npm install @openzeppelin/contracts
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+npx hardhat node
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm i bootstrap
 
-### Code Splitting
+npm i dotenv --save
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+npm i @alch/alchemy-web3
 
-### Analyzing the Bundle Size
+(in index.js)
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+module.exports = {
+  solidity: "0.8.4",
+  paths: {
+    artifacts: './src/artifacts',
+  },
+  networks: {
+    hardhat: {
+      chainId: 1337
+    },
+    ropsten: {
+      url: "https://eth-ropsten.alchemyapi.io/v2/oHgF5L-nRZw9gkMBmqQQDZ9h_hthR2YO",
+      accounts: [`615a1eb9b6f7ac0a980ea60bbf6cc24e56b2fe96b665c0e8113ac5a89ee8ef2f`]
+    }
+  }
+  }
